@@ -36,17 +36,6 @@ function theme_version()
     return $version;
 }
 /**
- * New filter for posty type == timepost2
- */
-function coders_clan_challenge_filter( $content )
-{
-	global $post;
-	if($post->post_type == 'timepost2' && date('H') < 20)
-    	return str_ireplace('hello', 'Good Morning!', $content);
-    else
-    	return $content;
-}
-/**
  * Theme assets
  */
 add_action('wp_enqueue_scripts', function () {
