@@ -153,3 +153,4 @@ function string_ends_with($haystack, $needle) {
 
     return $length === 0 || (substr($haystack, -$length) === $needle);
 }
+

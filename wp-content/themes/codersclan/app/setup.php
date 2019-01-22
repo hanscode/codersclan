@@ -35,7 +35,17 @@ function theme_version()
 
     return $version;
 }
-
+/**
+ * New filter for posty type == timepost2
+ */
+function coders_clan_challenge_filter( $content )
+{
+	global $post;
+	if($post->post_type == 'timepost2' && date('H') < 20)
+    	return str_ireplace('hello', 'Good Morning!', $content);
+    else
+    	return $content;
+}
 /**
  * Theme assets
  */
@@ -203,3 +213,33 @@ add_filter('acf/settings/show_admin', function () {
         return false;
     }
 });
+
+
+/**
+ * 
+ */
+
+add_action('init',function(){
+	$args = array(
+      'public' => true,
+      'label'  => 'TimePost'
+    );
+    register_post_type( 'timepost', $args );
+    	$args = array(
+      'public' => true,
+      'label'  => 'TimePost2'
+    );
+    register_post_type( 'timepost2', $args );
+});
+
+
+
+add_filter('the_content', function( $content ){
+	global $post;
+
+	if($post->post_type == 'timepost2' && date('H') < 11)
+    	return str_ireplace('Hello', 'Good Morning!', $content);
+    else
+    	return $content;
+
+} );
