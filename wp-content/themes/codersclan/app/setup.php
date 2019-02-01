@@ -193,7 +193,7 @@ add_action('acf/init', function () {
 
 /**
  * Only show Custom Fields admin page on ".local" address.
- *
+ */
 add_filter('acf/settings/show_admin', function () {
     $site_url = get_bloginfo('url');
 
@@ -202,7 +202,7 @@ add_filter('acf/settings/show_admin', function () {
     } else {
         return false;
     }
-});*/
+});
 
 /**
  * Challenge: Create a CPT with a function to replace strings based on time
@@ -551,7 +551,7 @@ endif;
 add_filter('acf/settings/save_json', function ( $path ) {
 
     // update path
-    $path = get_stylesheet_directory() . '/acf-json';
+    $path = get_template_directory_uri() . '/acf-json';
 
     // return
     return $path;
